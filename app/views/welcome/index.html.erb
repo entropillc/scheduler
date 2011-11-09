@@ -1,5 +1,5 @@
 <div class="container-fluid top-bar">
-  <a href="#new-event" class="modal-target btn primary">New Event</a>
+  <a href="#new-event" data-controls-modal="modal-from-dom" data-backdrop="static" class="modal-target btn primary">New Event</a>
 </div>
 <div class="container-fluid">
   <div class="sidebar whitebkg">
@@ -237,29 +237,16 @@
     </table>
   </div>
 </div>
-<div class="modal-backdrop">
-    <div id="new-event" class="modal">
-      <div class="modal-header">
-        <h3>Sign In</h3>
-        <a href="#" class="close">×</a>
-      </div>
-      <div class="modal-body">
-        <div class="clearfix">
-          <label for="username">Username:</label>
-          <div class="input">
-            <input class="xlarge" id="username" name="username" type="text"/>
-          </div>
-        </div>
-        <div class="clearfix">
-          <label for="password">Password:</label>
-          <div class="input">
-            <input class="xlarge" id="password" name="password" type="password"/>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="btn primary">Sign In</a>
-        <a href="#" class="btn close">Cancel</a>
-      </div>
-    </div>
-</div
+<div id="modal-from-dom" class="modal hide fade">
+  <div class="modal-header">
+    <a href="#" class="close">&times;</a>
+    <h3>Modal Heading</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn primary">Primary</a>
+    <a href="#" class="btn secondary">Secondary</a>
+  </div>
+</div>

@@ -3,6 +3,10 @@ html, body{
 	height:100%;
 }
 
+body {
+  padding-top: 40px;
+}
+
 /* Datepicker styles */
 .ui-datepicker {
 	width: 15em;
