@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="topbar">
+  <div class="fill">
+    <div class="container-fluid">
+      <h3><%= link_to 'Scheduler', root_url %></h3>
+    </div>
+  </div>
+</div>
 <%= yield %>
 
 </body>

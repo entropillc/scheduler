@@ -7,4 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= spin/spin
+//= jquery.bootstrap.js
 //= require_tree .
