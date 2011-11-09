@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap-modal
+//= require bootstrap-alerts
 //= spin/spin
-//= jquery.bootstrap.js
 //= require_tree .
