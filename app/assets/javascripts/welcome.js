@@ -1,3 +1,3 @@
 $(function() {
-	$( "#calendar-selector" ).datepicker();
+	
 });

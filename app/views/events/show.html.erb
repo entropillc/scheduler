@@ -1,0 +1,31 @@
+<% title "Event Details" %>
+
+<div class="well">
+  
+
+  <p>
+    <strong>Customer:</strong>
+	  <%= @event.customer %>
+  </p>
+  
+  <p>
+    <strong>Event Date:</strong>
+	  <%= @event.event_date %>
+  </p>
+  
+  <p>
+    <strong>Notes:</strong>
+	  <%= @event.notes %>
+  </p>
+  
+  <p>
+    <strong>Room:</strong>
+	  <%= @event.room_id %>
+  </p>
+  </div>
+
+<p>
+  <%= link_to "Edit", edit_event_path(@event), :class => 'btn float-right' %> |
+  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete, :class => 'btn float-right' %> |
+  <%= link_to "View All", events_path, :class => 'btn float-right' %>
+</p>

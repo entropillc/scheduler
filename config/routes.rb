@@ -1,5 +1,9 @@
 Scheduler::Application.routes.draw do
   
+  resources :time_markers
+
+  resources :events
+
   resources :rooms
 
   root :to => 'welcome#index'

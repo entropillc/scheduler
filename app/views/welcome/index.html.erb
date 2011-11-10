@@ -237,16 +237,52 @@
     </table>
   </div>
 </div>
-<div id="modal-from-dom" class="modal hide fade">
-  <div class="modal-header">
-    <a href="#" class="close">&times;</a>
-    <h3>Modal Heading</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn primary">Primary</a>
-    <a href="#" class="btn secondary">Secondary</a>
-  </div>
+<div id="modal-from-dom" class="modal wide hide fade">
+  <%= form_for Event.new, :remote => true do |f| %>
+    <div class="modal-header">
+      <a href="#" class="close">&times;</a>
+      <h3>New Event</h3>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="span8">
+          	<div class="validation-error"></div>
+          	<fieldset>
+          	  <div class="clearfix">
+          	    <%= f.label :customer %>
+          	    <div class="input">
+          	      <%= f.text_field :customer, :class => "span5" %>
+          	    </div>
+          	  </div>
+          	  <div class="clearfix">
+          	    <%= f.label :event_date %>
+          	    <div class="input">
+          	      <%= f.date_select :event_date, :class => 'span2' %>
+          	    </div>
+          	  </div>
+          	  <div class="clearfix">
+          	    <%= f.label :notes %>
+          	    <div class="input">
+          	      <%= f.text_area :notes, :rows => 3, :class => "span5" %>
+          	    </div>
+          	  </div>
+          	  <div class="clearfix">
+          	    <%= f.label :room_id %>
+          	    <div class="input">
+          	      <%= f.collection_select(:room_id, @rooms, :id, :name, :prompt => true) %>
+          	    </div>
+          	  </div>
+          	<fieldset>
+        </div>
+        <div class="span4">
+          <table>
+          
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit 'Save Event', :class => 'btn primary' %>
+    </div>
+  <% end %>
 </div>

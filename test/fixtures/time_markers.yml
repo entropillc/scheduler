@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  marker: 1
+  event_id: 1
+  room_id: 1
+
+two:
+  marker: 1
+  event_id: 1
+  room_id: 1

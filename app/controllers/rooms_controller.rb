@@ -6,7 +6,16 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.all
 
-    render json: @rooms 
+    render json: @rooms.to_json(
+      :except => [ :created_at, :updated_at ],
+      :include => {
+        :time_markers => {
+          :only => [:marker, :event => {
+            :only => [:customer, :notes]
+          }]
+        }
+      }
+    ) 
   end
 
   # GET /rooms/1
@@ -14,7 +23,16 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
 
-    render json: @room
+    render json: @room.to_json(
+      :except => [ :created_at, :updated_at ],
+      :include => {
+        :time_markers => {
+          :only => [:marker, :event => {
+            :only => [:customer, :notes]
+          }]
+        }
+      }
+    )
   end
 
   # GET /rooms/new

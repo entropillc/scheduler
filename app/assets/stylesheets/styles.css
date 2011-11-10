@@ -72,3 +72,8 @@ table.time td.reserved {
 	        /* Opera 9+, IE 9+ */
 	        opacity: 0.25;
 }
+
+.modal.wide {
+  left: 45%;
+  width: 820px;
+}

@@ -1,0 +1,11 @@
+one:
+  customer: MyString
+  event_date: 2011-11-09
+  notes: MyText
+  room_id: 1
+
+two:
+  customer: MyString
+  event_date: 2011-11-09
+  notes: MyText
+  room_id: 1

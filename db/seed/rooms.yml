@@ -1,0 +1,19 @@
+--- 
+rooms_01: 
+  id: 1
+  name: Room 1
+rooms_02: 
+  id: 2
+  name: Room 2
+rooms_03: 
+  id: 3
+  name: Room 3
+rooms_04: 
+  id: 4
+  name: Room 4
+rooms_05: 
+  id: 5
+  name: Room 5
+rooms_06: 
+  id: 6
+  name: Room 6

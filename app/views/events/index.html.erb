@@ -1,0 +1,35 @@
+<% title "Events" %>
+
+<div class="well">
+	<table class="zebra-striped">
+	  <tr>
+
+	    <th>Customer</th>
+
+	    <th>Event Date</th>
+
+	    <th>Notes</th>
+
+	    <th>Room</th>
+      <th></th>
+      <th></th>
+      <th></th>
+	  </tr>
+	  <% @events.each do |event| %>
+	    <tr>
+
+	      <td><%= event.customer %></td>
+
+	      <td><%= event.event_date %></td>
+
+	      <td><%= event.notes %></td>
+
+	      <td><%= event.room_id %></td>
+	      <td><%= link_to "Show", event %></td>
+	      <td><%= link_to "Edit", edit_event_path(event) %></td>
+	      <td><%= link_to "Destroy", event, :confirm => 'Are you sure?', :method => :delete %></td>
+	    </tr>
+	  <% end %>
+	</table>
+</div>
+<p><%= link_to "New Event", new_event_path, :class => 'btn primary float-right' %></p>

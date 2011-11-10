@@ -10,4 +10,5 @@
 //= require bootstrap-modal
 //= require bootstrap-alerts
 //= spin/spin
+//= initHandlers
 //= require_tree .
