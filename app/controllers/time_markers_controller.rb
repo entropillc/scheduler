@@ -6,7 +6,7 @@ class TimeMarkersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @time_markers }
+      format.json { render :json => @time_markers }
     end
   end
 
@@ -17,7 +17,7 @@ class TimeMarkersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @time_marker }
+      format.json { render :json => @time_marker }
     end
   end
 
@@ -28,7 +28,7 @@ class TimeMarkersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @time_marker }
+      format.json { render :json => @time_marker }
     end
   end
 
@@ -45,10 +45,10 @@ class TimeMarkersController < ApplicationController
     respond_to do |format|
       if @time_marker.save
         format.html { redirect_to @time_marker, notice: 'Time marker was successfully created.' }
-        format.json { render json: @time_marker, status: :created, location: @time_marker }
+        format.json { render :json => @time_marker, status: :created, location: @time_marker }
       else
         format.html { render action: "new" }
-        format.json { render json: @time_marker.errors, status: :unprocessable_entity }
+        format.json { render :json => @time_marker.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +64,7 @@ class TimeMarkersController < ApplicationController
         format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @time_marker.errors, status: :unprocessable_entity }
+        format.json { render :json => @time_marker.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
       
     @rooms = Room.all
 
-    render json: @rooms.as_json(:date => params[:date])
+    render :json => @rooms.as_json(:date => params[:date])
     
   end
 
@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     
-    render json: @room.as_json(:date => params[:date])
+    render :json => @room.as_json(:date => params[:date])
   end
 
   # GET /rooms/new
@@ -23,7 +23,7 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
 
-    render json: @room 
+    render :json => @room 
   end
 
   # GET /rooms/1/edit
@@ -37,9 +37,9 @@ class RoomsController < ApplicationController
     @room = Room.new(params[:room])
 
     if @room.save
-      render json: @room, status: :created, location: @room
+      render :json => @room, status: :created, location: @room
     else
-      render json: @room.errors, status: :unprocessable_entity
+      render :json => @room.errors, status: :unprocessable_entity
     end
   end
 
@@ -51,7 +51,7 @@ class RoomsController < ApplicationController
     if @room.update_attributes(params[:room])
       head :ok
     else
-      render json: @room.errors, status: :unprocessable_entity 
+      render :json => @room.errors, status: :unprocessable_entity 
     end
   end
 
