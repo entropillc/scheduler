@@ -37,9 +37,9 @@ class RoomsController < ApplicationController
     @room = Room.new(params[:room])
 
     if @room.save
-      render :json => @room, status: :created, location: @room
+      render :json => @room, :status => :created, :location => @room
     else
-      render :json => @room.errors, status: :unprocessable_entity
+      render :json => @room.errors, :status => :unprocessable_entity
     end
   end
 
@@ -51,7 +51,7 @@ class RoomsController < ApplicationController
     if @room.update_attributes(params[:room])
       head :ok
     else
-      render :json => @room.errors, status: :unprocessable_entity 
+      render :json => @room.errors, :status => :unprocessable_entity 
     end
   end
 
