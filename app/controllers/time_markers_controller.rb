@@ -44,11 +44,11 @@ class TimeMarkersController < ApplicationController
 
     respond_to do |format|
       if @time_marker.save
-        format.html { redirect_to @time_marker, notice: 'Time marker was successfully created.' }
-        format.json { render :json => @time_marker, status: :created, location: @time_marker }
+        format.html { redirect_to @time_marker, :notice => 'Time marker was successfully created.' }
+        format.json { render :json => @time_marker, :status => :created, :location => @time_marker }
       else
-        format.html { render action: "new" }
-        format.json { render :json => @time_marker.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @time_marker.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,11 +60,11 @@ class TimeMarkersController < ApplicationController
 
     respond_to do |format|
       if @time_marker.update_attributes(params[:time_marker])
-        format.html { redirect_to @time_marker, notice: 'Time marker was successfully updated.' }
+        format.html { redirect_to @time_marker, :notice => 'Time marker was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render :json => @time_marker.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @time_marker.errors, :status => :unprocessable_entity }
       end
     end
   end
