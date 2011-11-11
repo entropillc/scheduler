@@ -1,9 +1,17 @@
 class Event < ActiveRecord::Base
   
   belongs_to :room
+  belongs_to :customer
   has_many :time_markers, :dependent => :destroy
   
-  attr_accessible :customer, :event_date, :notes, :room_id
+  attr_accessible :customer_name, :customer_id, :event_date, :notes, :room_id
+  
+  before_save :set_customer_name
+  
+  def set_customer_name
+    c = Customer.find(self.customer_id)
+    self.customer_name = c.full_name
+  end
   
   def add_time_markers(markers)
     logger.debug markers

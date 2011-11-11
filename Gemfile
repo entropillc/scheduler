@@ -40,4 +40,8 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
 end
+
+group :development do 
+  gem 'mysql2'
+end
 gem "mocha", :group => :test

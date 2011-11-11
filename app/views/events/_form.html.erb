@@ -6,7 +6,7 @@
     	  <div class="clearfix">
     	    <%= f.label :customer %>
     	    <div class="input">
-    	      <%= f.collection_select(:room_id, @rooms, :full_name, :full_name, :prompt => true) %>
+    	      <%= f.collection_select(:customer_id, @customers, :id, :full_name, :prompt => true) %>
     	    </div>
     	  </div>
     	  <div class="clearfix">

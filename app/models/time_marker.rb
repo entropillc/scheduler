@@ -21,7 +21,7 @@ class TimeMarker < ActiveRecord::Base
        marker: self.marker,
        marker_date: self.marker_date,
        event_id: self.event_id,
-       event_name: self.event.customer
+       event_name: self.event.customer_name
      }
    end
   
