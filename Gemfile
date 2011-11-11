@@ -17,7 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'bootstrapped', :git => 'https://nickslime06@github.com/entropillc/bootstrapped.git'
+gem 'bootstrapped'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
