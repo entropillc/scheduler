@@ -1,15 +1,82 @@
 $(function(){
   
+  $(".datepicker").datepicker({
+    dateFormat: 'yy-mm-dd',
+    onSelect: function(dateText, inst){
+       
+    }
+  });
+  
+  $('#event_room_id').change(function() {
+    var eventDate = $("#event_event_date").val();
+    var room = $(this).val()
+    $.getJSON("/rooms/"+room+"?date="+eventDate, function(data) {
+      var el = $("#open-date-selector");
+      var dateList = $('<ul class="inputs-list">');
+      var markerArray = [];
+      
+      
+      $.each(data["time_markers"], function(k, value) {
+       markerArray.push(value['marker']);
+      });
+      
+      for (var i = 16; i <= 39; i++){
+        dateList.append("<li><label>");
+        if(jQuery.inArray(i, markerArray) === -1){
+          dateList.append('<input type="checkbox" id="time_' + i + '" name="time_marker_ids[]" value="' + i + '">');
+        }
+        dateList.append("<span>" + Math.floor(i/2) + ':' + (i % 2 ? '00' : 30) +"</span></label></li>");
+      }
+      el.html(dateList);
+
+    });
+  });
+  
+  //$(".roomSelector").change
   
   $( "#calendar-selector" ).datepicker({
+    dateFormat: 'yy-mm-dd',
     onSelect:  function(dateText, inst) { 
-      $.getJSON("/rooms/", function(data) {
-        alert(data);
+      $.getJSON("/rooms/?date=" + dateText, function(data) {
+        var timeTable = $("#time-table");
+        var table = '<table class="time"><thead><tr><th></th>';
+        
+        timesTaken = [];
+        
+        for(var i = 0; i < data.length; i++){
+          var timesArray = [];
+          $.each(data[i]["time_markers"], function(k, value) {
+           timesArray.push(value['marker']);
+          });
+          timesTaken.push(timesArray);
+          
+          table += "<th>" + data[i]["name"] + "</th>";
+        }
+        table += "</tr></thead>";
+        
+        for (var times = 16; times <= 39; times++){
+          table += '<tr>';
+          table += "<td><span>" + Math.floor(times/2) + ':' + (times % 2 ? '00' : 30) +"</span></td>";
+          for (var columns = 0; columns < data.length; columns++){
+            var arrayPosition = jQuery.inArray(times, timesTaken[columns])
+            
+            var rowClass = (arrayPosition === -1) ? '' : 'reserved';
+            var cell = (arrayPosition > -1) ?  data[columns]["time_markers"][arrayPosition]["event_name"] : ''
+            
+            table += '<td style="color: #000;" class="' + rowClass +'">' + cell + '</td>';
+              
+          }
+          table += '</tr>';
+        }
+        
+        table += "</tr></table>";
+        
+        timeTable.html(table);
       })
     }
   });
   
-  var eventModal = $('#modal-from-dom')
+  var eventModal = $('#modal-from-dom');
   
   eventModal.bind('hidden', function () {
     //alert('The modal was hidden');

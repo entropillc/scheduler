@@ -1,38 +1,21 @@
 class RoomsController < ApplicationController
-  respond_to :json
   
   # GET /rooms
   # GET /rooms.json
   def index
+      
     @rooms = Room.all
 
-    render json: @rooms.to_json(
-      :except => [ :created_at, :updated_at ],
-      :include => {
-        :time_markers => {
-          :only => [:marker, :event => {
-            :only => [:customer, :notes]
-          }]
-        }
-      }
-    ) 
+    render json: @rooms.as_json(:date => params[:date])
+    
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
     @room = Room.find(params[:id])
-
-    render json: @room.to_json(
-      :except => [ :created_at, :updated_at ],
-      :include => {
-        :time_markers => {
-          :only => [:marker, :event => {
-            :only => [:customer, :notes]
-          }]
-        }
-      }
-    )
+    
+    render json: @room.as_json(:date => params[:date])
   end
 
   # GET /rooms/new

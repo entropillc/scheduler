@@ -1,5 +1,5 @@
 <div class="container-fluid top-bar">
-  <a href="#new-event" data-controls-modal="modal-from-dom" data-backdrop="static" class="modal-target btn primary">New Event</a>
+  <%= link_to "New Event", new_event_path, :class => 'btn primary'%>
 </div>
 <div class="container-fluid">
   <div class="sidebar whitebkg">
@@ -7,7 +7,7 @@
       
     </div>
   </div>
-  <div class="content">
+  <div id="time-table" class="content">
     <table class="time">
       <tr>
         <th></th>
@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td class="time">8:00 am</td>
-        <td class="reserved"></td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -275,9 +275,152 @@
           	<fieldset>
         </div>
         <div class="span4">
-          <table>
-          
-          </table>
+          <ul class="inputs-list time-selector">
+            <li>
+              <label>
+                <input type="checkbox" id="time_16" name="time_marker_ids[]" value="16">
+                <span>8:00 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_17" name="time_marker_ids[]" value="17">
+                <span>8:30 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_18" name="time_marker_ids[]" value="18">
+                <span>9:00 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_19" name="time_marker_ids[]" value="19">
+                <span>9:30 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_20" name="time_marker_ids[]" value="20">
+                <span>10:00 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_21" name="time_marker_ids[]" value="21">
+                <span>10:30 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_22" name="time_marker_ids[]" value="22">
+                <span>11:00 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_23" name="time_marker_ids[]" value="23">
+                <span>11:30 am</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_24" name="time_marker_ids[]" value="24">
+                <span>12:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_25" name="time_marker_ids[]" value="25">
+                <span>12:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_25" name="time_marker_ids[]" value="25">
+                <span>1:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_26" name="time_marker_ids[]" value="26">
+                <span>1:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_27" name="time_marker_ids[]" value="28">
+                <span>2:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_29" name="time_marker_ids[]" value="29">
+                <span>2:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_30" name="time_marker_ids[]" value="30">
+                <span>3:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_31" name="time_marker_ids[]" value="31">
+                <span>3:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_32" name="time_marker_ids[]" value="32">
+                <span>4:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_33" name="time_marker_ids[]" value="33">
+                <span>4:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_34" name="time_marker_ids[]" value="34">
+                <span>5:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_35" name="time_marker_ids[]" value="35">
+                <span>5:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_36" name="time_marker_ids[]" value="36">
+                <span>6:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_37" name="time_marker_ids[]" value="37">
+                <span>6:30 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_38" name="time_marker_ids[]" value="38">
+                <span>7:00 pm</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" id="time_39" name="time_marker_ids[]" value="39">
+                <span>7:30 pm</span>
+              </label>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

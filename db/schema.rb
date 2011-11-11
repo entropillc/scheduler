@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20111110023300) do
     t.integer  "marker"
     t.integer  "event_id"
     t.integer  "room_id"
+    t.string   "customer"
+    t.date     "marker_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
