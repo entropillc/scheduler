@@ -10,8 +10,8 @@ class Room < ActiveRecord::Base
     logger.debug opts[:date]
      
      {
-       name: self.name,
-       time_markers: self.time_markers.by_date(opts[:date])
+       :name => self.name,
+       :time_markers => self.time_markers.by_date(opts[:date])
      }
   end
   
