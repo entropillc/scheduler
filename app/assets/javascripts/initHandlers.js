@@ -24,7 +24,7 @@ $(function(){
       for (var i = 0; i < clockTimes.length; i++){
         dateList += '<div class="clearfix"><div class="input-prepend">';
         
-        var checkbox = (jQuery.inArray(i, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + i + '" name="time_marker_ids[]" value="' + i + '">' : '';
+        var checkbox = (jQuery.inArray(i, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + i+1 + '" name="time_marker_ids[]" value="' + i+1 + '">' : '';
         
         dateList += '<label class="add-on">' + checkbox + '</label>';
         
@@ -64,7 +64,7 @@ $(function(){
           table += '<tr>';
           table += "<td><span>" + clockTimes[times] +"</span></td>";
           for (var columns = 0; columns < data.length; columns++){
-            var arrayPosition = jQuery.inArray(times, timesTaken[columns])
+            var arrayPosition = jQuery.inArray(times+1, timesTaken[columns])
             
             var rowClass = (arrayPosition === -1) ? '' : 'reserved';
             var cell = (arrayPosition > -1) ? '<a href="/events/' + data[columns]["time_markers"][arrayPosition]["event_id"] + '">' + data[columns]["time_markers"][arrayPosition]["event_name"] + '</a>' : ''
