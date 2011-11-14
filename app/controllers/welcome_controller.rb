@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
       @rooms = Room.includes(:time_markers).where("time_markers.marker_date", Time.now.strftime("%m/%d/%Y"))
     end
     
+    @time_availables = TimeAvailable.all
   end
   
 end

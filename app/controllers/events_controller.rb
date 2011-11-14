@@ -25,6 +25,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @customers = Customer.all
     @time_markers = params[:date] ? TimeMarker.by_date(params[:date]) : []
+    @time_availables = TimeAvailable.all
     
     logger.debug @time_markers
     

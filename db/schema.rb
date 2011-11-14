@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111110023300) do
+ActiveRecord::Schema.define(:version => 20111114113334) do
 
   create_table "brands", :force => true do |t|
     t.string "brand", :limit => 30, :null => false
@@ -132,8 +132,15 @@ ActiveRecord::Schema.define(:version => 20111110023300) do
     t.binary "comments"
   end
 
+  create_table "time_availables", :force => true do |t|
+    t.string   "name"
+    t.integer  "display_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "time_markers", :force => true do |t|
-    t.integer  "marker"
+    t.integer  "time_available_id"
     t.integer  "event_id"
     t.integer  "room_id"
     t.string   "customer"

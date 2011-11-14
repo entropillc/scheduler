@@ -1,0 +1,17 @@
+--- 
+time_availables_01: 
+  id: 1
+  name: 11:00 am - 12:30 pm
+  display_order: 1
+time_availables_02: 
+  id: 2
+  name: 1:00 pm - 2:30 pm
+  display_order: 2
+time_availables_03: 
+  id: 3
+  name: 3:00 pm - 4:30 pm
+  display_order: 3
+time_availables_04: 
+  id: 4
+  name: 5:00 pm - 6:30 pm
+  display_order: 4

@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
     
     markers.each do |marker|
       new_marker = self.time_markers.build
-      new_marker.marker = marker
+      new_marker.time_available_id = marker
       new_marker.room_id = self.room_id
       new_marker.marker_date = self.event_date
       

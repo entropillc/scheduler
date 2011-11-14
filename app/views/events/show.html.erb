@@ -63,7 +63,7 @@
     <h3>Times</h3>
     <ul>
       <% @event.time_markers.each do |marker| %>
-        <li><%= has_time(marker.marker) %></li>
+        <li><%= marker.time_available.name %></li>
       <% end %>
     <ul>
   </div>
