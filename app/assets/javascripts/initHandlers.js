@@ -24,7 +24,9 @@ $(function(){
       for (var i = 0; i < clockTimes.length; i++){
         dateList += '<div class="clearfix"><div class="input-prepend">';
         
-        var checkbox = (jQuery.inArray(i, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + i+1 + '" name="time_marker_ids[]" value="' + i+1 + '">' : '';
+        var _id = i+1
+        
+        var checkbox = (jQuery.inArray(i, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + _id + '" name="time_marker_ids[]" value="' + _id + '">' : '';
         
         dateList += '<label class="add-on">' + checkbox + '</label>';
         
