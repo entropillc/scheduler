@@ -26,7 +26,7 @@ $(function(){
         
         var _id = i+1
         
-        var checkbox = (jQuery.inArray(i, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + _id + '" name="time_marker_ids[]" value="' + _id + '">' : '';
+        var checkbox = (jQuery.inArray(i+1, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + _id + '" name="time_marker_ids[]" value="' + _id + '">' : '';
         
         dateList += '<label class="add-on">' + checkbox + '</label>';
         
