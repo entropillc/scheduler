@@ -7,4 +7,8 @@ class Customer < ActiveRecord::Base
     last_name + ', ' + first_name
   end
   
+  def list_value
+    phone_number.nil? ? full_name : full_name + ' - '+ phone_number 
+  end
+  
 end

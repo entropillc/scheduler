@@ -39,48 +39,50 @@ $(function(){
     });
   });
   
-  //$(".roomSelector").change
+  var displayEventCalendar = function(dateText){
+    $.getJSON("/rooms/?date=" + dateText, function(data) {
+      var timeTable = $("#time-table");
+      var table = '<table class="time"><thead><tr><th></th>';
+      var clockTimes = [ "11:00 am - 12:30 pm", "1:00 pm - 2:30 pm", "3:00 pm - 4:30 pm", "5:00 pm - 6:30 pm"];
+        
+      timesTaken = [];
+      
+      for(var i = 0; i < data.length; i++){
+        var timesArray = [];
+        $.each(data[i]["time_markers"], function(k, value) {
+         timesArray.push(value['marker']);
+        });
+        timesTaken.push(timesArray);
+        
+        table += "<th width='14%'>" + data[i]["name"] + "</th>";
+      }
+      table += "</tr></thead>";
+      
+      for (var times = 0; times < clockTimes.length; times++){
+        table += '<tr>';
+        table += "<td><span>" + clockTimes[times] +"</span></td>";
+        for (var columns = 0; columns < data.length; columns++){
+          var arrayPosition = jQuery.inArray(times+1, timesTaken[columns])
+          
+          var rowClass = (arrayPosition === -1) ? '' : 'reserved';
+          var cell = (arrayPosition > -1) ? '<a href="/events/' + data[columns]["time_markers"][arrayPosition]["event_id"] + '">' + data[columns]["time_markers"][arrayPosition]["event_name"] + '</a>' : ''
+          
+          table += '<td style="color: #000;" class="' + rowClass +'">' + cell + '</td>';
+            
+        }
+        table += '</tr>';
+      }
+      
+      table += "</tr></table>";
+      
+      timeTable.html(table);
+    });
+  }
   
   $( "#calendar-selector" ).datepicker({
     dateFormat: 'yy-mm-dd',
     onSelect:  function(dateText, inst) { 
-      $.getJSON("/rooms/?date=" + dateText, function(data) {
-        var timeTable = $("#time-table");
-        var table = '<table class="time"><thead><tr><th></th>';
-        var clockTimes = [ "11:00 am - 12:30 pm", "1:00 pm - 2:30 pm", "3:00 pm - 4:30 pm", "5:00 pm - 6:30 pm"];
-          
-        timesTaken = [];
-        
-        for(var i = 0; i < data.length; i++){
-          var timesArray = [];
-          $.each(data[i]["time_markers"], function(k, value) {
-           timesArray.push(value['marker']);
-          });
-          timesTaken.push(timesArray);
-          
-          table += "<th width='14%'>" + data[i]["name"] + "</th>";
-        }
-        table += "</tr></thead>";
-        
-        for (var times = 0; times < clockTimes.length; times++){
-          table += '<tr>';
-          table += "<td><span>" + clockTimes[times] +"</span></td>";
-          for (var columns = 0; columns < data.length; columns++){
-            var arrayPosition = jQuery.inArray(times+1, timesTaken[columns])
-            
-            var rowClass = (arrayPosition === -1) ? '' : 'reserved';
-            var cell = (arrayPosition > -1) ? '<a href="/events/' + data[columns]["time_markers"][arrayPosition]["event_id"] + '">' + data[columns]["time_markers"][arrayPosition]["event_name"] + '</a>' : ''
-            
-            table += '<td style="color: #000;" class="' + rowClass +'">' + cell + '</td>';
-              
-          }
-          table += '</tr>';
-        }
-        
-        table += "</tr></table>";
-        
-        timeTable.html(table);
-      })
+      displayEventCalendar(dateText);
     }
   });
   
@@ -148,5 +150,11 @@ $(function(){
      // Insert error list into form
      $form.find('div.validation-error').html(errorText);
    });
-     
+   
+   
+   if($( "#calendar-selector" ).length != 0){
+     var currentTime = new Date();
+     displayEventCalendar(currentTime.getFullYear() + '-' + currentTime.getMonth() + '-' + currentTime.getDate());
+   }   
+    
 });
