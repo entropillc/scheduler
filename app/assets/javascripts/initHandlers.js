@@ -174,10 +174,14 @@ $(function(){
      var month = currentTime.getMonth()+1;
      var day = currentTime.getDate();
      displayEventCalendar(year + '-' + month + '-' + day);
-   }   
+   } 
    
-   if($("#event_event_date").length != 0){
-     displayEventSelection($("#event_event_date").val());
+   var eventEventDate = $("#event_event_date");
+   
+   if(eventEventDate.length != 0){
+     if (eventEventDate.val().length > 0){
+       displayEventSelection($("#event_event_date").val());
+     }
    }
     
 });

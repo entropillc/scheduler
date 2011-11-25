@@ -16,18 +16,24 @@ class Event < ActiveRecord::Base
   def add_time_markers(markers)
     logger.debug markers
     
+    
+    
     markers.each do |marker|
       logger.debug marker
       logger.debug marker[0]
-      if TimeMarker.existing?(marker[2], marker[0], event_date)
+      
+      values = marker.chars.to_a
+      
+      if TimeMarker.existing?(values[2], values[0], event_date)
         return false
       end
     end
     
     markers.each do |marker|
+      values = marker.chars.to_a
       new_marker = self.time_markers.build
-      new_marker.time_available_id = marker[2]
-      new_marker.room_id = marker[0]
+      new_marker.time_available_id = values[2]
+      new_marker.room_id = values[0]
       new_marker.marker_date = self.event_date
       
       time_markers << new_marker
