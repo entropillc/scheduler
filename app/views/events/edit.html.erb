@@ -1,9 +1,9 @@
 <div class="container-fluid">
-<h1>Edit Event</h1>
-<%= render "form" %>
-
-<p>
-  <%= link_to "Show", @event %> |
-  <%= link_to "Main Screen", root_path %>
-</p>
+  <ul class="breadcrumb">
+    <li><%= link_to 'Main Screen', root_path %><span class="divider">&#47;</span></li>
+    <li><%= link_to 'Event Details', @event %><span class="divider">&#47;</span></li>
+    <li class="active">Show Event</li>
+  </ul>
+  <h1>Edit Event</h1>
+  <%= render "form" %>
 </div>
