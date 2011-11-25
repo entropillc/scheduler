@@ -57,3 +57,26 @@ table.time td.reserved {
   left: 45%;
   width: 820px;
 }
+
+label {
+  width: 75px;
+}
+
+form .input {
+  margin-left: 90px;
+}
+
+.span2-5{
+  width: 125px;
+  margin-left: 0px;
+}
+
+.span3-5{
+  width: 165px;
+}
+
+h1 {
+  margin-bottom: 5px;
+  font-size: 30px;
+  line-height: 36px;
+}

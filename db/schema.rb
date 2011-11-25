@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114113334) do
+ActiveRecord::Schema.define(:version => 20111125031157) do
 
   create_table "brands", :force => true do |t|
     t.string "brand", :limit => 30, :null => false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20111114113334) do
     t.date     "event_date"
     t.text     "notes"
     t.integer  "room_id"
+    t.integer  "party_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,6 +68,13 @@ ActiveRecord::Schema.define(:version => 20111114113334) do
     t.integer "quantity"
     t.integer "reorder_level"
     t.string  "image",                :limit => 80, :default => "images/items/item.gif"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.date     "note_date"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pre_sales", :force => true do |t|

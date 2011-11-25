@@ -1,5 +1,7 @@
 Scheduler::Application.routes.draw do
   
+  resources :notes
+
   resources :time_markers
 
   resources :events

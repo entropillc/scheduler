@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :event_date
       t.text :notes
       t.integer :room_id
+      t.integer :party_type
       t.timestamps
     end
   end

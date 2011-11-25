@@ -48,7 +48,9 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    @event.add_time_markers(params[:time_marker_ids])
+    
+    @event.add_time_markers(params[:time_marker_ids]) unless params[:time_marker_ids].nil?
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to root_path, :notice => 'Event was successfully created.' }
@@ -64,7 +66,10 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
+    @event.time_markers.clear
+    
+    @event.add_time_markers(params[:time_marker_ids]) unless params[:time_marker_ids].nil?
+    
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, :notice => 'Event was successfully updated.' }

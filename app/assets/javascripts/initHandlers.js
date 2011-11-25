@@ -1,43 +1,59 @@
 $(function(){
   
-  $(".datepicker").datepicker({
+  var displayEventSelection = function(dateText){
+    $.getJSON("/rooms/?date=" + dateText, function(data) {
+      var el = $("#open-date-selector");
+      var current_event = $("#current_event_id").val();
+      var dataSelections = '<div class="row">';
+      
+      var clockTimes = [ "11:00 am - 12:30 pm", "1:00 pm - 2:30 pm", "3:00 pm - 4:30 pm", "5:00 pm - 6:30 pm"];
+      
+      for(var i = 0; i < data.length; i++){
+        dataSelections += '<div class="span3-5"><h6>' + data[i]["name"] + '</h6>';
+        
+        var timesArray = [];
+        
+        $.each(data[i]["time_markers"], function(k, value) {
+         timesArray.push(value['marker']);
+        });
+        
+        for (var v = 0; v < clockTimes.length; v++){
+          dataSelections += '<div class="clearfix"><div class="input-prepend">';
+
+          var _id = v+1
+          var _did = i+1
+          var currentTimePosition = jQuery.inArray(v+1, timesArray);
+          
+          
+          if ( currentTimePosition === -1){
+            checkbox = '<input class="add-on" type="checkbox" id="time_' + _id + '" name="time_marker_ids[]" value="' + _did + ',' + _id + '">';
+          } else {
+            if (data[i]["time_markers"][currentTimePosition]["event_id"] == current_event){
+              checkbox = '<input class="add-on" type="checkbox" id="time_' + _id + '" name="time_marker_ids[]" value="' + _did + ',' + _id + '" checked="checked">';;
+            } else {
+              checkbox = '';
+            }
+          }
+
+          dataSelections += '<label class="add-on">' + checkbox + '</label>';
+
+          dataSelections += '<input readonly="readonly" id="prependedInput2" name="prependedInput2" value="' + clockTimes[v]  + '" class="span2-5" type="text"></div></div>';
+        }
+        dataSelections += '</div>';
+      }
+      
+      dataSelections += '</div>';
+      el.html(dataSelections);
+    });
+  }
+  
+  $( "#event_event_date" ).datepicker({
     dateFormat: 'yy-mm-dd',
-    onSelect: function(dateText, inst){
-       
+    onSelect:  function(dateText, inst) { 
+      displayEventSelection(dateText);
     }
   });
   
-  $('#event_room_id').change(function() {
-    var eventDate = $("#event_event_date").val();
-    var room = $(this).val()
-    $.getJSON("/rooms/"+room+"?date="+eventDate, function(data) {
-      var el = $("#open-date-selector");
-      var dateList = '<fieldset>';
-      var markerArray = [];
-      var clockTimes = [ "11:00 am - 12:30 pm", "1:00 pm - 2:30 pm", "3:00 pm - 4:30 pm", "5:00 pm - 6:30 pm"];
-      
-      $.each(data["time_markers"], function(k, value) {
-       markerArray.push(value['marker']);
-      });
-      
-      // <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text"></div></div>
-      for (var i = 0; i < clockTimes.length; i++){
-        dateList += '<div class="clearfix"><div class="input-prepend">';
-        
-        var _id = i+1
-        
-        var checkbox = (jQuery.inArray(i+1, markerArray) === -1) ? '<input class="add-on" type="checkbox" id="time_' + _id + '" name="time_marker_ids[]" value="' + _id + '">' : '';
-        
-        dateList += '<label class="add-on">' + checkbox + '</label>';
-        
-        dateList += '<input readonly="readonly" id="prependedInput2" name="prependedInput2" value="' + clockTimes[i]  + '" class="span3" type="text"></div></div>';
-      }
-      
-      dateList += "</fieldset>";
-      el.html(dateList);
-
-    });
-  });
   
   var displayEventCalendar = function(dateText){
     $.getJSON("/rooms/?date=" + dateText, function(data) {
@@ -154,7 +170,14 @@ $(function(){
    
    if($( "#calendar-selector" ).length != 0){
      var currentTime = new Date();
-     displayEventCalendar(currentTime.getFullYear() + '-' + currentTime.getMonth() + '-' + currentTime.getDate());
+     var year = currentTime.getFullYear();
+     var month = currentTime.getMonth()+1;
+     var day = currentTime.getDate();
+     displayEventCalendar(year + '-' + month + '-' + day);
    }   
+   
+   if($("#event_event_date").length != 0){
+     displayEventSelection($("#event_event_date").val());
+   }
     
 });
