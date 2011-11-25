@@ -6,15 +6,15 @@
 	<div class="row">
 	  <div class="span-one-third">
       <div class="clearfix">
-        <%= f.label :customer %>
-        <div class="input">
-          <%= f.collection_select(:customer_id, @customers, :id, :list_value, :prompt => true) %>
-        </div>
-      </div>
-      <div class="clearfix">
         <%= f.label :event_date %>
         <div class="input">
           <%= f.text_field :event_date, :class => 'span2 datepicker' %>
+        </div>
+      </div>
+      <div class="clearfix">
+        <%= f.label :customer %>
+        <div class="input">
+          <%= f.collection_select(:customer_id, @customers, :id, :list_value, :prompt => true) %>
         </div>
       </div>
 	  </div>

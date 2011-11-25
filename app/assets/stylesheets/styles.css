@@ -62,6 +62,10 @@ label {
   width: 75px;
 }
 
+.input-prepend .add-on, .input-append .add-on {
+  z-index: 1;
+}
+
 form .input {
   margin-left: 90px;
 }
