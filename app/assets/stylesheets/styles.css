@@ -88,3 +88,8 @@ h1 {
 .breadcrumb {
   margin-top: 5px;
 }
+
+pre {
+  border 0;
+  margin-top: 15px;
+}

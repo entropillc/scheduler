@@ -1,6 +1,10 @@
 Scheduler::Application.routes.draw do
   
-  resources :notes
+  resources :notes do
+    collection do
+      get 'find'
+    end
+  end
 
   resources :time_markers
 

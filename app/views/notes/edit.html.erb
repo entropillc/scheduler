@@ -1,6 +1,8 @@
-<h1>Editing note</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @note %> |
-<%= link_to 'Back', notes_path %>
+<div class="container-fluid">
+  <ul class="breadcrumb">
+    <li><%= link_to 'Main Screen', root_path %><span class="divider">&#47;</span></li>
+    <li class="active">Edit Notes</li>
+  </ul>
+  <h1>Editing Note: <%= @note.note_date.strftime("%m/%d/%Y") %></h1>
+  <%= render 'form' %>
+</div>

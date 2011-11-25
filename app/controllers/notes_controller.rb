@@ -9,6 +9,12 @@ class NotesController < ApplicationController
       format.json { render :json => @notes }
     end
   end
+  
+  def find
+    @note = Note.find_or_create_by_note_date(params[:date])
+    
+    render :json => @note
+  end
 
   # GET /notes/1
   # GET /notes/1.json
@@ -60,7 +66,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, :notice => 'Note was successfully updated.' }
+        format.html { redirect_to root_path, :notice => 'Note was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
