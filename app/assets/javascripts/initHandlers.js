@@ -100,6 +100,19 @@ $(function(){
       notesView.html(innerHtml);
     });
   }
+
+	var displayEventsList = function(date){
+		$.getJSON("/events/date=" + dateText, function(data) {
+			var eventsList = $("#events-list");
+			var innerHtml = "<h6>Today's " + data.length + " Events</h6>";
+			
+			/*for (e in data){
+				
+			}*/
+			
+			eventsList.html(innerHtml);
+		});
+	}
   
   
   $( "#event_event_date" ).datepicker({
@@ -128,7 +141,8 @@ $(function(){
      var day = currentTime.getDate();
      currentDate = year + '-' + month + '-' + day
      displayEventCalendar(currentDate);
-     displayNotesForDay(currentDate)
+     displayNotesForDay(currentDate);
+		 displayEventsList(currentDate);
    } 
    
    var eventEventDate = $("#event_event_date");

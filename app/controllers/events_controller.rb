@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-
+    @events = Event.find_by_event_date(params[:date])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @events }
