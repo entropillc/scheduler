@@ -101,14 +101,22 @@ $(function(){
     });
   }
 
-	var displayEventsList = function(date){
-		$.getJSON("/events/date=" + dateText, function(data) {
+	var displayEventsList = function(dateText){
+		$.getJSON("/events/?date=" + dateText, function(data) {
 			var eventsList = $("#events-list");
-			var innerHtml = "<h6>Today's " + data.length + " Events</h6>";
+			var innerHtml = "<h6>Today's " + data.length + " Event(s)</h6><dl>";
 			
-			/*for (e in data){
+			for (e in data){
+				innerHtml += '<dt>' + data[e]["customer_name"] + '</dt><dd>';
+				if (data[e]["event_type"] === 1) {
+				  innertHtml += 'Basic';
+				} else {
+				  innerHtml += 'Deluxe';
+				}
+				innerHtml += ' Party</dd>';
 				
-			}*/
+			}
+			innerHtml += '</dl>';
 			
 			eventsList.html(innerHtml);
 		});
