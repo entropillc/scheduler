@@ -1,0 +1,44 @@
+
+<div class="container-fluid">
+  <h1>December</h1>
+  <div style="margin-bottom: 5px;">
+    <a href="calendar?month=<%= get_previous_month(@calendar_month, @calendar_year) %>&year=<%= get_previous_query_year(@calendar_month, @calendar_year) %>" class="btn primary">&lt;&lt; Previous Month</a>
+    <a href="calendar?month=<%= get_next_month(@calendar_month, @calendar_year) %>&year=<%= get_next_query_year(@calendar_month, @calendar_year) %>" class="btn primary">Next Month &gt;&gt;</a>
+  </div>
+  <table class="calendar" cellspacing="0">
+  	<thead>
+  		<tr>
+  		  <th>Sunday</th>
+  			<th>Monday</th>
+  			<th>Tuesday</th>
+  			<th>Wednesday</th>
+  			<th>Thursday</th>
+  			<th>Friday</th>
+  			<th>Saturday</th>
+  		</tr>
+  	</thead>
+  	
+  	<% day = 1 %>
+  	<tbody>
+  	  <% (1..number_of_squares(@calendar_month, @calendar_year)).each do |position| %>
+        <td>
+          <% if position >= first_day_of_month(@calendar_month, @calendar_year) && day <= days_in_month(@calendar_month, @calendar_year) %>
+            <h3><%= day %></h3>
+            <%= list_events @calendar_month, day, @calendar_year %>
+            <% day += 1%>
+          <% end %>
+        </td>
+        <% if position.modulo(7).eql?(0) %>
+          <% case position
+    	      when 1 %>
+    	        <tr>
+    	      <% when 35 %>
+    	        </tr>
+    	      <% else %>
+    	        </tr><tr>
+    	    <% end %>
+  	    <% end %>
+  	  <% end %>
+  	</tbody>
+  </table>
+</div>

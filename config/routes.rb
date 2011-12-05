@@ -11,6 +11,8 @@ Scheduler::Application.routes.draw do
   resources :events
 
   resources :rooms
+  
+  match 'calendar' => 'welcome#calendar', :via => :get, :as => :calendar
 
   root :to => 'welcome#index'
   

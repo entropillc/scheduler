@@ -15,9 +15,6 @@ class Event < ActiveRecord::Base
   
   def add_time_markers(markers)
     logger.debug markers
-    
-    
-    
     markers.each do |marker|
       logger.debug marker
       logger.debug marker[0]
@@ -39,5 +36,21 @@ class Event < ActiveRecord::Base
       time_markers << new_marker
     end
   end
+  
+  
+  class << self
+    
+    def find_events_in_month(month, year)
+      
+      first_day_of_month = Date.new(year, month, 1)
+      last_day_of_month =  (Date.new(year, 12, 31) << (12-month)).day
+      last_day_date = Date.new(year, month, last_day_of_month)
+      
+      
+      select("count(*) as event_count, event_date, party_type").where("event_date >= ? and  event_date <= ?", first_day_of_month, last_day_date).group("event_date, party_type")
+    end
+    
+  end
+  
   
 end

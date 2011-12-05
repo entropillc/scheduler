@@ -11,10 +11,15 @@
   <div class="fill">
     <div class="container-fluid">
       <h3><%= link_to 'Scheduler', root_url %></h3>
+      <ul class="nav">
+        <% if controller.controller_name == "welcome" && controller.action_name == "index" %><li class="active"><% else %><li><% end %>
+          <%= link_to 'Home', root_url %>
+        <% if controller.controller_name == "welcome" && controller.action_name == "calendar" %><li class="active"><% else %><li><% end %>
+          <%= link_to 'Event Calendar', calendar_path %></li>
+      </ul>
     </div>
   </div>
 </div>
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
