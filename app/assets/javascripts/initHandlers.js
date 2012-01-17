@@ -43,7 +43,7 @@ $(function(){
 			},
 			{
 				value: 9,
-				daysAvailable: [6],
+				daysAvailable: [1,2,3,4,5,6],
 				text: "7:00 pm - 8:30 pm"
 			},
 		];
