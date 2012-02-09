@@ -80,12 +80,17 @@ $(function(){
          timesArray.push(value['marker']);
         });
         
+        console.log(timesArray);
+        
         for (var v = 0; v < clockTimes.length; v++){
           dataSelections += '<div class="clearfix"><div class="input-prepend">';
 
           var _id = clockTimes[v]["value"]
           var _did = i+1
-          var currentTimePosition = jQuery.inArray(clockTimes[v]["id"], timesArray);
+          
+          console.log(clockTimes);
+          
+          var currentTimePosition = jQuery.inArray(clockTimes[v]["value"], timesArray);
           
           
           if ( currentTimePosition === -1){
